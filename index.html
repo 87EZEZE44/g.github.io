@@ -126,7 +126,7 @@
         #angle2-bg {
             position: absolute;
             width: 105%;
-            height: 90px;
+            height: 80px;
             background: #0d0d0d;
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             z-index: 1;
@@ -205,9 +205,9 @@
 
         const secondsLeft = Math.floor(diffMs / 1000);
 
-        const remainingText = ` ${String(hoursLeft).padStart(2, '0')}h ${String(minutesLeft).padStart(2, '0')}m ${String(secondsLeft).padStart(2, '0')}s`;
+        const remainingText = ` ${String(hoursLeft).padStart(2, '0')} ${String(minutesLeft).padStart(2, '0')} ${String(secondsLeft).padStart(2, '0')}`;
 
-        document.getElementById('countdown').textContent = `⏳ Activity ends: ${formattedDeadline}: ${remainingText}`;
+        document.getElementById('countdown').textContent = `⏳ Activity ends: ⏱ ${formattedDeadline} ${remainingText} (UTC) `;
     }
 
     updateCountdown();
