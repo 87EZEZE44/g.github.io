@@ -97,7 +97,7 @@
             margin: 0 auto;
             z-index: 2;
             position: absolute;
-            transform: translateY(-80px);
+            transform: translateY(-100px);
             left: calc(50% - 60px);
         }
 
@@ -126,7 +126,7 @@
         #angle2-bg {
             position: absolute;
             width: 105%;
-            height: 120px;
+            height: 80px;
             background: #0d0d0d;
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             z-index: 1;
@@ -190,7 +190,7 @@
         const day = String(deadline.getDate()).padStart(2, '0');
         const hours = String(deadline.getHours()).padStart(2, '0');
         const minutes = String(deadline.getMinutes()).padStart(2, '0');
-        const formattedDeadline = `${year}-${month}-${day} ${hours}:${minutes}`;
+        const formattedDeadline = `${year}-${month}-${day}`;
 
         let diffMs = deadline - now;
 
