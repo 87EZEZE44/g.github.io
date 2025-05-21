@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Binance Gift</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
         body {
             margin: 0;
             background-color: #1e1f26;
@@ -14,32 +20,47 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            padding: 20px;
         }
 
         #card {
             background: #0d0d0d;
             border-radius: 20px;
-            width: 94%;
-            height: 90%;
-            max-width: 400px;
-            padding: 30px 0 0 0;
+            width: 100%;
+            height: 100%;
+            max-width: 450px;
             text-align: center;
             color: white;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
             border: 2.8px solid #333;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #items {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         #card img {
             width: 100px;
-            margin-bottom: 50px;
+            margin-bottom: 70px;
         }
 
         #card h2 {
             font-size: 1.4em;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         #card p {
@@ -64,24 +85,23 @@
             background-color: #f1b90c;
             color: #000;
             border: none;
-            bottom: 215px;
+            bottom: 0;
             border-radius: 50%;
             width: 120px;
             height: 120px;
             font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 22px 20px rgb(0 0 0 / 90%);
+            box-shadow: 0 26px 20px rgb(0 0 0 / 90%);
             transition: transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 0 auto;
             z-index: 2;
-            position: relative;
+            position: absolute;
+            transform: translateY(-80px);
+            left: calc(50% - 60px);
         }
 
-        #btn:hover {
+        #btn:active {
             transform: scale(1.05);
         }
 
@@ -94,7 +114,7 @@
 
         #angle-bg {
             position: absolute;
-            bottom: 130px;
+            /* bottom: 130px; */
             left: 0;
             width: calc(100% - 40px);
             height: 120px;
@@ -106,7 +126,7 @@
         #angle2-bg {
             position: absolute;
             width: 105%;
-            height: 90px;
+            height: 120px;
             background: #0d0d0d;
             clip-path: polygon(0 0, 100% 0, 50% 100%);
             z-index: 1;
@@ -115,46 +135,85 @@
 
         #bottomDiv {
             width: 100%;
-            height: 225px;
+            height: 230px;
             background-color: #1d1e23;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
+            position: relative;
         }
 
-        #triangle {
-            background-color: tomato;
-            width: 100%;
-            height: 500px;
-            transform: rotate(45deg);
-            box-sizing: border-box;
-            margin: 0 0 20 0;
-            padding: 0;
+        #binance {
+            width: 200px;
+            height: 40px;
+            background-image: url("https://www.logo.wine/a/logo/Binance/Binance-Logo.wine.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 75%;
+            position: absolute;
+            bottom: 0;
+            transform: translateY(-25px);
         }
     </style>
 </head>
 
 <body>
     <div id="card">
-        <img src="BinanceEGGGOLD.png" alt="binance logo" />
-        <h2>Let’s both win a gift!</h2>
-        <p>Open this Gift and win up to</p>
-        <div id="btc">1 BTC</div>
-        <div id="deadline">
-            ⏳ Activity ends: 2024-04-30 11:00 (UTC)
+        <div id="items">
+            <img src="https://binancegift.linkpc.net/BinanceEGGGOLD.png" alt="binance logo" />
+            <h2>Let’s both win a gift!</h2>
+            <p>Open this Gift and win up to</p>
+            <div id="btc">1 BTC</div>
+            <p id="countdown">⏳ Activity ends: calculating...</p>
         </div>
 
         <div id="bottomDiv">
             <div id="angle2-bg"></div>
-            <p>OPEN</p>
-            <img src="https://www.logo.wine/a/logo/Binance/Binance-Logo.wine.svg" alt="binance logo"
-                style="width: 200px; margin-bottom: -110px; display: block; margin-left: -50px; margin-right: -0px;">
+            <div id="binance"></div>
         </div>
         <button id="btn">OPEN</button>
-    </div>
+
     </div>
 </body>
+<script>
+    function updateCountdown() {
+        const now = new Date();
+        const deadline = new Date();
+        deadline.setHours(10, 0, 0, 0);
+
+        if (now > deadline) {
+            deadline.setDate(deadline.getDate() + 1);
+        }
+
+        const year = deadline.getFullYear();
+        const month = String(deadline.getMonth() + 1).padStart(2, '0');
+        const day = String(deadline.getDate()).padStart(2, '0');
+        const hours = String(deadline.getHours()).padStart(2, '0');
+        const minutes = String(deadline.getMinutes()).padStart(2, '0');
+        const formattedDeadline = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+        let diffMs = deadline - now;
+
+        const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        diffMs %= (1000 * 60 * 60 * 24);
+
+        const hoursLeft = Math.floor(diffMs / (1000 * 60 * 60));
+        diffMs %= (1000 * 60 * 60);
+
+        const minutesLeft = Math.floor(diffMs / (1000 * 60));
+        diffMs %= (1000 * 60);
+
+        const secondsLeft = Math.floor(diffMs / 1000);
+
+        const remainingText = ` ${String(hoursLeft).padStart(2, '0')}h ${String(minutesLeft).padStart(2, '0')}m ${String(secondsLeft).padStart(2, '0')}s`;
+
+        document.getElementById('countdown').textContent = `⏳ Activity ends: ${formattedDeadline}: ${remainingText}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+
 
 </html>
