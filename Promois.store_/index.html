@@ -910,15 +910,12 @@
         }
 
         .related-slider {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* جوج فالسطر */
             gap: 15px;
-            padding: 10px;
-            scroll-behavior: smooth;
-            flex-wrap: wrap;
-            justify-content: space-around;
         }
+
 
         .related-slider::-webkit-scrollbar {
             display: none;
@@ -945,10 +942,73 @@
 
         /* Mobile */
         @media (max-width: 600px) {
+            .related-slider {
+                grid-template-columns: repeat(2, 1fr);
+                /* جوج حتى فالموبايل */
+                gap: 10px;
+            }
+
             .slide {
-                min-width: 100%;
+                padding: 10px;
+            }
+
+            .slide img {
+                height: 110px;
+            }
+
+            .slide h3 {
+                font-size: 13px;
+            }
+
+            .price {
+                font-size: 15px;
+            }
+
+            .btn-related {
+                font-size: 12px;
+                padding: 6px 8px;
             }
         }
+
+        /* PC & Tablet */
+        .related-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 فالسطر */
+            gap: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .related-slider {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 فالسطر */
+                gap: 10px;
+            }
+
+            .slide {
+                padding: 10px;
+            }
+
+            .slide img {
+                height: 110px;
+            }
+
+            .slide h3 {
+                font-size: 13px;
+            }
+
+            .price {
+                font-size: 15px;
+            }
+
+            .btn-related {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+        }
+
+
 
 
         .slide img {
